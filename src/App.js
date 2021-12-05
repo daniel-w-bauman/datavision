@@ -1,19 +1,24 @@
 import './App.css'
 //import Plot from 'react-plotly.js'
 //import * as d3 from 'd3';
+import MyPlot from './MyPlot'
 import React from 'react'
-//import MyPlot from './MyPlot'
-import GraphOption from './GraphOption'
+import GraphChoices from './GraphChoices'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+
 
 function App(){
   return (
-    <div className="App">
-      <div className="container-fluid">
-        <h1 align={'center'}>DataVision</h1>
-        <h3>Which type of graph would you like to create?</h3>
-        <GraphOption title='Scatter Points' text='A graph of scattered points' link='/make-scatter' />
-
-      </div>
+    <div className="container-fluid">
+      <h1 align={'center'}>DataVision</h1>
+      <Router>
+        <Routes>
+          <Route exact path='/' element={<GraphChoices />} />
+          <Route path='/make-scatter' element={<MyPlot mode='markers'/>} />
+          <Route path='/make-line' element={<MyPlot mode='lines+markers' />} />
+        </Routes>
+      </Router>
     </div>
   )
 }
