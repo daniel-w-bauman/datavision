@@ -1,9 +1,10 @@
 import React from 'react'
 import GraphOption from './GraphOption'
+import './App.css'
 
-function GraphChoices(props){
+export default function GraphChoices(props){
     return (
-      <div>        
+      <div>
         <h3>Which type of graph would you like to create?</h3>
         <div className='row'>
           <div className='col'>
@@ -41,5 +42,3 @@ function GraphChoices(props){
       </div>
     )
 }
-
-export default GraphChoices

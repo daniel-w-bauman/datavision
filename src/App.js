@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Scatter from './Scatter'
 import Line from './Line'
 
-function App(){
+export default function App(){
   return (
     <div className="container-fluid">
       <h1 align={'center'}>DataVision</h1>
@@ -19,5 +19,3 @@ function App(){
     </div>
   )
 }
-
-export default App

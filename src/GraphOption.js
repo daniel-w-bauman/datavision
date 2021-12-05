@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import { Link } from "react-router-dom"
 
-function GraphOption(props){
+export default function GraphOption(props){
   return (
     <div className="card" style={{'margin': '25px'}}>
       <div className="card-body">
@@ -13,5 +13,3 @@ function GraphOption(props){
     </div>
   )
 }
-
-export default GraphOption
