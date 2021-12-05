@@ -1,5 +1,4 @@
 import Plot from 'react-plotly.js'
-//import * as d3 from 'd3';
 import React from 'react'
 
 function MyPlot(props) {
@@ -23,4 +22,4 @@ function MyPlot(props) {
   )
 }
 
-export default MyPlot;
+export default MyPlot

@@ -1,12 +1,9 @@
 import './App.css'
-//import Plot from 'react-plotly.js'
-//import * as d3 from 'd3';
-import MyPlot from './MyPlot'
 import React from 'react'
 import GraphChoices from './GraphChoices'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Scatter from './Scatter'
+import Line from './Line'
 
 function App(){
   return (
@@ -15,12 +12,12 @@ function App(){
       <Router>
         <Routes>
           <Route exact path='/' element={<GraphChoices />} />
-          <Route path='/make-scatter' element={<MyPlot mode='markers'/>} />
-          <Route path='/make-line' element={<MyPlot mode='lines+markers' />} />
+          <Route path='/make-scatter' element={<Scatter />} />
+          <Route path='/make-line' element={<Line />} />
         </Routes>
       </Router>
     </div>
   )
 }
 
-export default App;
+export default App
