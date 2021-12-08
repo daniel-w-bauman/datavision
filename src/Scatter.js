@@ -8,18 +8,22 @@ export default function Scatter(props){
   const [y, setY] = useState(('y' in props) ? props.y : [-8, 2, -4, 6, -2])
 
   useEffect(() => {
-    csv('/scatter1.csv').then(data => {
-      let x_ = []
-      let y_ = []
-      for(let item in data){
-        x_.push(data[item].x)
-        y_.push(data[item].y)
-      }
-    setX(x_)
-    setY(y_)
-    }).catch(err => {
-      console.log(err);
-    })
+		async function readCSV() {
+			try {
+				let data = await csv('/scatter1.csv')
+	      let x_ = []
+	      let y_ = []
+	      for(let item in data){
+	        x_.push(data[item].x)
+	        y_.push(data[item].y)
+	      }
+		    setX(x_)
+		    setY(y_)
+			} catch(err) {
+	      console.log(err);
+	    }
+		}
+		readCSV()
   }, [])
 
   return (
