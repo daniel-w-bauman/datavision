@@ -1,9 +1,9 @@
 import './App.css'
 import React from 'react'
-import GraphChoices from './GraphChoices'
+import GraphChoices from './components/GraphChoices'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Scatter from './Scatter'
-import Line from './Line'
+import Scatter from './components/Scatter'
+import Line from './components/Line'
 
 export default function App(){
   return (

@@ -1,9 +1,8 @@
-import './App.css'
+import '../App.css'
 import React, { useState, useEffect } from 'react'
 import MyPlot from './MyPlot'
 import {csv} from 'd3'
 import EditLine from './EditLine'
-import './App.css'
 
 function editXStart(xstart, xaxis, setXaxis, x){
   if(isNaN(xstart)){
@@ -40,11 +39,16 @@ function editYEnd(yend, yaxis, setYaxis, y){
   }
 }
 
+function toggleMode(mode, setMode){
+  setMode((mode === 'lines') ? 'lines+markers' : 'lines')
+}
+
 export default function Line(props){
   const [x, setX] = useState(('x' in props) ? props.x : [-4, -2, 0, 2, 4])
   const [y, setY] = useState(('y' in props) ? props.y : [-8, 2, -4, 6, -2])
   const [xaxis, setXaxis] = useState({ range: [ Math.min(...x), Math.max(...x) ] })
   const [yaxis, setYaxis] = useState({ range: [ Math.min(...y), Math.max(...y) ] })
+  const [mode, setMode] = useState('lines')
 
   useEffect(() => {
     csv('/example.csv').then(data => {
@@ -60,10 +64,10 @@ export default function Line(props){
           y_.push(newY)
         }
       }
-    setX(x_)
-    setY(y_)
-    setXaxis({ range: [ Math.min(...x_), Math.max(...x_) ] })
-    setYaxis({ range: [ Math.min(...y_), Math.max(...y_) ] })
+      setX(x_)
+      setY(y_)
+      setXaxis({ range: [ Math.min(...x_), Math.max(...x_) ] })
+      setYaxis({ range: [ Math.min(...y_), Math.max(...y_) ] })
     }).catch(err => {
       console.log(err);
     })
@@ -72,7 +76,7 @@ export default function Line(props){
   return (
     <div className='row'>
       <div className='col'>
-        <MyPlot  x={x} y={y} mode='lines' xaxis={xaxis} yaxis={yaxis} />
+        <MyPlot x={x} y={y} xaxis={xaxis} yaxis={yaxis} mode={mode} />
       </div>
       <div className='col'>
         <EditLine
@@ -80,6 +84,7 @@ export default function Line(props){
           editXEnd={(xend) => editXEnd(xend, xaxis, setXaxis, x)}
           editYStart={(ystart) => editYStart(ystart, yaxis, setYaxis, y)}
           editYEnd={(yend) => editYEnd(yend, yaxis, setYaxis, y)}
+          toggleMode={() => toggleMode(mode, setMode)}
           />
       </div>
     </div>

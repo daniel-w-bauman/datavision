@@ -1,6 +1,6 @@
 import Plot from 'react-plotly.js'
 import React from 'react'
-import './App.css'
+import '../App.css'
 
 export default function MyPlot(props) {
   const x = ('x' in props) ? props.x : [-4, -2, 0, 2, 4]

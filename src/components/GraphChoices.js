@@ -1,6 +1,6 @@
 import React from 'react'
 import GraphOption from './GraphOption'
-import './App.css'
+import '../App.css'
 
 export default function GraphChoices(props){
     return (

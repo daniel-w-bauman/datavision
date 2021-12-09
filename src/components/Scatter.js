@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import MyPlot from './MyPlot'
 import {csv} from 'd3'
-import './App.css'
+import '../App.css'
 
 export default function Scatter(props){
   const [x, setX] = useState(('x' in props) ? props.x : [-4, -2, 0, 2, 4])
