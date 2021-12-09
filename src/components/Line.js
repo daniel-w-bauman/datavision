@@ -51,26 +51,30 @@ export default function Line(props){
   const [mode, setMode] = useState('lines')
 
   useEffect(() => {
-    csv('/example.csv').then(data => {
-      let x_ = []
-      let y_ = []
-      for(let item in data){
-        let newX = parseFloat(data[item].x)
-        let newY = parseFloat(data[item].y)
-        if(!isNaN(newX)){
-          x_.push(newX)
-        }
-        if(!isNaN(newY)){
-          y_.push(newY)
-        }
-      }
-      setX(x_)
-      setY(y_)
-      setXaxis({ range: [ Math.min(...x_), Math.max(...x_) ] })
-      setYaxis({ range: [ Math.min(...y_), Math.max(...y_) ] })
-    }).catch(err => {
-      console.log(err);
-    })
+		async function readCSV(){
+			try {
+				let data = await csv('/example.csv')
+	      let x_ = []
+	      let y_ = []
+	      for(let item in data){
+	        let newX = parseFloat(data[item].x)
+	        let newY = parseFloat(data[item].y)
+	        if(!isNaN(newX)){
+	          x_.push(newX)
+	        }
+	        if(!isNaN(newY)){
+	          y_.push(newY)
+	        }
+	      }
+		    setX(x_)
+		    setY(y_)
+		    setXaxis({ range: [ Math.min(...x_), Math.max(...x_) ] })
+		    setYaxis({ range: [ Math.min(...y_), Math.max(...y_) ] })
+			} catch(err) {
+	      console.log(err);
+	    }
+		}
+		readCSV()
   }, [])
 
   return (
