@@ -29,12 +29,9 @@ function editYStart(ystart, yaxis, setYaxis, y){
 }
 
 function editYEnd(yend, yaxis, setYaxis, y){
-  if(isNaN(yend)){
-    console.log(y);
-    console.log("new yend value: (not NaN) " + Math.max(...y));
+  if(isNaN(yend)){    
     setYaxis({ range: [ yaxis.range[0], Math.max(...y) ] })
   } else {
-    console.log("new yend value: " + yend);
     setYaxis({ range: [ yaxis.range[0], yend ] })
   }
 }

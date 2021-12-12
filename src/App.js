@@ -4,6 +4,8 @@ import GraphChoices from './components/GraphChoices'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Scatter from './components/Scatter'
 import Line from './components/Line'
+import Bar from './components/Bar'
+import Pie from './components/Pie'
 
 export default function App(){
   return (
@@ -14,6 +16,8 @@ export default function App(){
           <Route exact path='/' element={<GraphChoices />} />
           <Route path='/make-scatter' element={<Scatter />} />
           <Route path='/make-line' element={<Line />} />
+          <Route path='/make-bar' element={<Bar />} />
+          <Route path='/make-pie' element={<Pie />} />
         </Routes>
       </Router>
     </div>

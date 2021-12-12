@@ -14,13 +14,23 @@ export default function MyPlot(props) {
   const xaxis = ('xaxis' in props) ? props.xaxis : { range: [ Math.min(...x), Math.max(...x) ] }
   const yaxis = ('yaxis' in props) ? props.yaxis : { range: [ Math.min(...y), Math.max(...y) ] }
 
-  return (
-    <Plot data = {[{
-        x: x,
-        y: y,
-        type: type,
-        mode: mode,
-        marker: marker,
-      }]} layout = {{width: width, height: height, title: title, xaxis: xaxis, yaxis: yaxis}} />
-  )
+  if(('labels' in props) && ('values' in props) && (type == 'pie')){
+    return (
+      <Plot data = {[{
+        labels: props.labels,
+        values: props.values,
+        type: type
+      }]} layout = {{width: width, height: height, title: title}} />
+    )
+  } else {
+    return (
+      <Plot data = {[{
+          x: x,
+          y: y,
+          type: type,
+          mode: mode,
+          marker: marker,
+        }]} layout = {{width: width, height: height, title: title, xaxis: xaxis, yaxis: yaxis}} />
+    )
+  }
 }
