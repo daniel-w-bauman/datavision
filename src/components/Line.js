@@ -1,7 +1,6 @@
 import '../App.css'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import MyPlot from './MyPlot'
-import {csv} from 'd3'
 import EditLine from './EditLine'
 
 function editXStart(xstart, xaxis, setXaxis, x){
@@ -29,7 +28,7 @@ function editYStart(ystart, yaxis, setYaxis, y){
 }
 
 function editYEnd(yend, yaxis, setYaxis, y){
-  if(isNaN(yend)){    
+  if(isNaN(yend)){
     setYaxis({ range: [ yaxis.range[0], Math.max(...y) ] })
   } else {
     setYaxis({ range: [ yaxis.range[0], yend ] })
@@ -41,38 +40,11 @@ function toggleMode(mode, setMode){
 }
 
 export default function Line(props){
-  const [x, setX] = useState(('x' in props) ? props.x : [-4, -2, 0, 2, 4])
-  const [y, setY] = useState(('y' in props) ? props.y : [-8, 2, -4, 6, -2])
+  const x = ('x' in props.data) ? props.data.x.map(i => parseFloat(i)).filter(i => !isNaN(i)) : [-4, -2, 0, 2, 4]
+  const y = ('y' in props.data) ? props.data.y.map(i => parseFloat(i)).filter(i => !isNaN(i)) : [-8, 2, -4, 6, -2]
   const [xaxis, setXaxis] = useState({ range: [ Math.min(...x), Math.max(...x) ] })
   const [yaxis, setYaxis] = useState({ range: [ Math.min(...y), Math.max(...y) ] })
   const [mode, setMode] = useState('lines')
-
-  useEffect(() => {
-		async function readCSV(){
-			try {
-				let data = await csv('/example.csv')
-	      let x_ = []
-	      let y_ = []
-	      for(let item in data){
-	        let newX = parseFloat(data[item].x)
-	        let newY = parseFloat(data[item].y)
-	        if(!isNaN(newX)){
-	          x_.push(newX)
-	        }
-	        if(!isNaN(newY)){
-	          y_.push(newY)
-	        }
-	      }
-		    setX(x_)
-		    setY(y_)
-		    setXaxis({ range: [ Math.min(...x_), Math.max(...x_) ] })
-		    setYaxis({ range: [ Math.min(...y_), Math.max(...y_) ] })
-			} catch(err) {
-	      console.log(err);
-	    }
-		}
-		readCSV()
-  }, [])
 
   return (
     <div className='row'>

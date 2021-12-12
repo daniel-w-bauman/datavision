@@ -7,7 +7,7 @@ export default function EditLine(props){
   return (
     <div className="card edit-panel">
       <div className="card-body">
-        <h3 className="card-title" style={{'margin-bottom': '10px'}}>Graph Options</h3>
+        <h3 className="card-title" style={{marginBottom: '10px'}}>Graph Options</h3>
         <EditAxis
           editXStart={props.editXStart}
           editXEnd={props.editXEnd}
