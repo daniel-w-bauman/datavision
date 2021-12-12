@@ -11,7 +11,7 @@ export default function Bar(props){
   useEffect(() => {
 		async function readCSV(){
 			try {
-				let data = await csv('/bar1.csv')
+				let data = await csv('http://localhost:8000/bar1.csv')
 	      let x_ = []
 	      let y_ = []
 	      for(let item in data){

@@ -14,7 +14,7 @@ export default function MyPlot(props) {
   const xaxis = ('xaxis' in props) ? props.xaxis : { range: [ Math.min(...x), Math.max(...x) ] }
   const yaxis = ('yaxis' in props) ? props.yaxis : { range: [ Math.min(...y), Math.max(...y) ] }
 
-  if(('labels' in props) && ('values' in props) && (type == 'pie')){
+  if(('labels' in props) && ('values' in props) && (type === 'pie')){
     return (
       <Plot data = {[{
         labels: props.labels,

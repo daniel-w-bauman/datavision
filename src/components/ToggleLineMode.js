@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function ToggleLineMode(props){
   return (
-    <div className="row align-items-center" style={{'margin-bottom': '10px'}}>
+    <div className="row align-items-center" style={{marginBottom: '10px'}}>
       <div className="col">
         <label className="form-label">Enable/Disable data point markers:</label>
       </div>
