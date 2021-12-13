@@ -9,7 +9,7 @@ export default function ChooseData(props) {
   const [choosing, setChoosing] = useState('x')
   const navigate = useNavigate()
 
-  let selectNext = (col) => {
+  let selectNext = (e, col) => {
     if(choosing === 'x'){
       let x_ = []
       for(let i in data){
@@ -17,13 +17,14 @@ export default function ChooseData(props) {
       }
       setX(x_)
       setChoosing('y')
+      e.target.className = "btn btn-outline-secondary"
       setInstruction('Choose the dependent (vertical) data column')
     } else {
       let y_ = []
       for(let i in data){
         y_.push(data[i][col]);
       }
-      props.setData({x: x, y: y_})      
+      props.setData({x: x, y: y_})
       navigate(props.link)
     }
   }
@@ -38,7 +39,7 @@ export default function ChooseData(props) {
           <thead>
             <tr>
               {Object.keys(data[0]).map((val, key) => {
-                return (<th key={key}><button className="btn btn btn-outline-primary" onClick={(e) => selectNext(val)}>{val}</button></th>)
+                return (<th key={key}><button className="btn btn-outline-primary" onClick={(e) => selectNext(e, val)}>{val}</button></th>)
               })}
             </tr>
           </thead>
