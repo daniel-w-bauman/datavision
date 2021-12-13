@@ -51,10 +51,10 @@ export default function Upload(props) {
   }
 
   return (
-    <div>
+    <div className="container">
       <h1>Upload a file</h1>
-      <input className="form-control" type="file" onChange={saveFile} style={{margin: '20px'}} />
-      <button className="btn btn-primary" onClick={uploadFile} style={{margin: '20px'}}>Upload</button>
+      <input className="form-control" type="file" onChange={saveFile} style={{marginBottom: '20px'}} />
+      <button className="btn btn-primary" onClick={uploadFile}>Upload</button>
     </div>
   )
 }

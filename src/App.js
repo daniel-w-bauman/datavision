@@ -1,7 +1,7 @@
 import './App.css'
 import React, { useState } from 'react'
 import GraphChoices from './components/GraphChoices'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Scatter from './components/Scatter'
 import Line from './components/Line'
 import Bar from './components/Bar'
@@ -14,8 +14,8 @@ export default function App(){
 
   return (
     <div className="container-fluid">
-      <h1 align={'center'}>DataVision</h1>
       <Router>
+        <h1 align={'center'}><Link to='/' style={{textDecoration: 'none', color: 'black'}}>DataVision</Link></h1>
         <Routes>
           <Route exact path='/' element={<GraphChoices />} />
           <Route path='/upload-scatter' element={<Upload link='/choose-data-scatter' setData={setData} />} />
