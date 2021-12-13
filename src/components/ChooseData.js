@@ -23,7 +23,7 @@ export default function ChooseData(props) {
       for(let i in data){
         y_.push(data[i][col]);
       }
-      props.setData({x: x, y: y_})
+      props.setData({x: x, y: y_})      
       navigate(props.link)
     }
   }
