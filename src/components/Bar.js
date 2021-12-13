@@ -15,14 +15,9 @@ export default function Bar(props){
         <MyPlot x={x} y={y} yaxis={{range: [0, Math.max(...y)]}} type='bar' marker={{color: color}} />
       </div>
       <div className='col'>
-        <div className="card edit-panel">
-          <div className="card-body">
-            <h3 className="card-title" style={{marginBottom: '10px'}}>Graph Options</h3>
-            <EditBar
-            color={color}
-            setColor={setColor} />
-          </div>
-        </div>
+        <EditBar
+        color={color}
+        setColor={setColor} />
       </div>
     </div>
   )

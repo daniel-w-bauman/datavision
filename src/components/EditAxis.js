@@ -3,8 +3,8 @@ import '../App.css'
 
 export default function EditAxis(props) {
   return (
-    <div className="container">
-      <div className="row align-items-center" style={{marginBottom: '10px'}}>
+    <div>
+      <div className="row align-items-center">
         <div className="col">
           <label className="form-label">X axis starting value:</label>
         </div>
@@ -13,7 +13,7 @@ export default function EditAxis(props) {
         </div>
       </div>
 
-      <div className="row align-items-center" style={{marginBottom: '10px'}}>
+      <div className="row align-items-center">
         <div className="col">
           <label className="form-label">X axis ending value:</label>
         </div>
@@ -22,7 +22,7 @@ export default function EditAxis(props) {
         </div>
       </div>
 
-      <div className="row align-items-center" style={{marginBottom: '10px'}}>
+      <div className="row align-items-center">
         <div className="col">
           <label className="form-label">Y axis starting value:</label>
         </div>
@@ -31,7 +31,7 @@ export default function EditAxis(props) {
         </div>
       </div>
 
-      <div className="row align-items-center" style={{marginBottom: '10px'}}>
+      <div className="row align-items-center">
         <div className="col">
           <label className="form-label">Y axis ending value:</label>
         </div>
