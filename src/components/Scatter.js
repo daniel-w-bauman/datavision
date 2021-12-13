@@ -47,6 +47,7 @@ export default function Scatter(props){
   const [yaxis, setYaxis] = useState({ range: [ Math.min(...y), Math.max(...y) ] })
   const [mode, setMode] = useState('markers')
 
+
   return (
     <div className='row'>
       <div className='col'>

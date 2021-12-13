@@ -25,22 +25,20 @@ export default function Upload(props) {
           async function readCSV() {
       			try {
       				let data = await csv('http://localhost:8000/' + uploadRes.data.filename)
-      	      let x_ = []
-      	      let y_ = []
-      	      for(let item in data){
-                if(('x' in data[item]) && ('y' in data[item]))
-      	        x_.push(data[item].x)
-      	        y_.push(data[item].y)
-      	      }
-              return { x: x_, y: y_ }
+      	      return data
       			} catch(err) {
       	      console.log(err);
-              return { x: [], y: [] }
+              return {'error': err}
       	    }
       		}
       		const res = await readCSV()
-          props.setData(res)          
-          navigate(props.link)
+          if('error' in res){
+            alert(res.error)
+            console.log(res.error)
+          } else {
+            props.setData(res)
+            navigate(props.link)
+          }
         } else {
           console.log('Error: no filename in response');
         }
