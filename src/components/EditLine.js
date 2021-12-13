@@ -2,6 +2,7 @@ import React from 'react'
 import '../App.css'
 import EditAxis from './EditAxis'
 import ToggleLineMode from './ToggleLineMode'
+import PickColor from './PickColor'
 
 export default function EditLine(props){
   return (
@@ -15,6 +16,7 @@ export default function EditLine(props){
           editYEnd={props.editYEnd}
           />
         <ToggleLineMode toggleMode={props.toggleMode} />
+        <PickColor color={props.color} setColor={props.setColor} />
       </div>
     </div>
   )

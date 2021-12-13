@@ -46,12 +46,12 @@ export default function Scatter(props){
   const [xaxis, setXaxis] = useState({ range: [ Math.min(...x)-1, Math.max(...x)+1 ] })
   const [yaxis, setYaxis] = useState({ range: [ Math.min(...y)-1, Math.max(...y)+1 ] })
   const [mode, setMode] = useState('markers')
-
+  const [color, setColor] = useState('blue')
 
   return (
     <div className='row'>
       <div className='col'>
-        <MyPlot  x={x} y={y} xaxis={xaxis} yaxis={yaxis} mode={mode} />
+        <MyPlot  x={x} y={y} xaxis={xaxis} yaxis={yaxis} mode={mode} marker={{color: color}} />
       </div>
       <div className='col'>
         <EditLine
@@ -60,6 +60,8 @@ export default function Scatter(props){
           editYStart={(ystart) => editYStart(ystart, yaxis, setYaxis, y)}
           editYEnd={(yend) => editYEnd(yend, yaxis, setYaxis, y)}
           toggleMode={() => toggleMode(mode, setMode)}
+          color={color}
+          setColor={setColor}
           />
       </div>
     </div>
