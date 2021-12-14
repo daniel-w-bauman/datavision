@@ -15,7 +15,7 @@ export default function EditPie(props) {
     <div className="card edit-panel">
       <div className="card-body">
         <h3 className="card-title" style={{marginBottom: '10px'}}>Graph Options</h3>
-        <EditTitle title={props.title} setTitle={props.setTitle} />
+        <EditTitle prompt={'title'} title={props.title} setTitle={props.setTitle} />
         <div className='row align-items-center'>
           <div className='col'>
             <label>Toggle donut pie</label>

@@ -47,11 +47,13 @@ export default function Line(props){
   const [mode, setMode] = useState('lines')
   const [color, setColor] = useState('blue')
   const [title, setTitle] = useState('Line')
+  const [xtitle, setXtitle] = useState('')
+  const [ytitle, setYtitle] = useState('')
 
   return (
     <div className='row'>
       <div className='col'>
-        <MyPlot x={x} y={y} xaxis={xaxis} yaxis={yaxis} mode={mode} marker={{color: color}} title={title} />
+        <MyPlot x={x} y={y} xaxis={{range: xaxis.range, title: xtitle}} yaxis={{range: yaxis.range, title: ytitle}} mode={mode} marker={{color: color}} title={title} />
       </div>
       <div className='col'>
         <EditLine
@@ -64,6 +66,10 @@ export default function Line(props){
           setColor={setColor}
           title={title}
           setTitle={setTitle}
+          xtitle={xtitle}
+          setXtitle={setXtitle}
+          setYtitle={setYtitle}
+          ytitle={ytitle}
           />
       </div>
     </div>

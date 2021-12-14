@@ -10,11 +10,13 @@ export default function Bar(props){
   const [color, setColor] = useState('blue')
   const [title, setTitle] = useState('Bar')
   const [tickangle, setTickangle] = useState(0)
+  const [xtitle, setXtitle] = useState('')
+  const [ytitle, setYtitle] = useState('')
 
   return (
     <div className='row'>
       <div className='col'>
-        <MyPlot x={x} y={y} xaxis={{tickangle: tickangle}} yaxis={{range: [0, Math.max(...y)]}} type='bar' marker={{color: color}} title={title} />
+        <MyPlot x={x} y={y} xaxis={{tickangle: tickangle, title: xtitle}} yaxis={{range: [0, Math.max(...y)], title: ytitle}} type='bar' marker={{color: color}} title={title} />
       </div>
       <div className='col'>
         <EditBar
@@ -23,7 +25,11 @@ export default function Bar(props){
         title={title}
         setTitle={setTitle}
         tickangle={tickangle}
-        setTickangle={setTickangle} />
+        setTickangle={setTickangle}
+        xtitle={xtitle}
+        setXtitle={setXtitle}
+        setYtitle={setYtitle}
+        ytitle={ytitle} />
       </div>
     </div>
   )
