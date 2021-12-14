@@ -19,12 +19,12 @@ export default function Upload(props) {
     formData.append('file', file)
     formData.append('fileName', filename)
     try {
-      const uploadRes = await axios.post('http://localhost:8000/upload', formData)
+      const uploadRes = await axios.post('/upload', formData)
       if('data' in uploadRes){
         if('filename' in uploadRes.data){
           async function readCSV() {
       			try {
-      				let data = await csv('http://localhost:8000/' + uploadRes.data.filename)
+      				let data = await csv('/' + uploadRes.data.filename)
       	      return data
       			} catch(err) {
       	      console.log(err);
