@@ -15,11 +15,13 @@ export default function MyPlot(props) {
   const yaxis = ('yaxis' in props) ? props.yaxis : { range: [ Math.min(...y), Math.max(...y) ] }
 
   if(('labels' in props) && ('values' in props) && (type === 'pie')){
+    const hole = ('hole' in props) ? props.hole : 0
     return (
       <Plot data = {[{
         labels: props.labels,
         values: props.values,
-        type: type
+        type: type,
+        hole: hole,
       }]} layout = {{width: width, height: height, title: title}} />
     )
   } else {

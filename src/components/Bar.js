@@ -9,18 +9,21 @@ export default function Bar(props){
   const y = ('y' in props.data) ? props.data.y.filter(i => !(i === undefined)) : [20, 14, 23]
   const [color, setColor] = useState('blue')
   const [title, setTitle] = useState('Bar')
+  const [tickangle, setTickangle] = useState(0)
 
   return (
     <div className='row'>
       <div className='col'>
-        <MyPlot x={x} y={y} yaxis={{range: [0, Math.max(...y)]}} type='bar' marker={{color: color}} title={title} />
+        <MyPlot x={x} y={y} xaxis={{tickangle: tickangle}} yaxis={{range: [0, Math.max(...y)]}} type='bar' marker={{color: color}} title={title} />
       </div>
       <div className='col'>
         <EditBar
         color={color}
         setColor={setColor}
         title={title}
-        setTitle={setTitle} />
+        setTitle={setTitle}
+        tickangle={tickangle}
+        setTickangle={setTickangle} />
       </div>
     </div>
   )

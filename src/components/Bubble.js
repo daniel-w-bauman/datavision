@@ -1,6 +1,6 @@
-import React from 'react'
-import Map from './Map'
+import React, { useState } from 'react'
 import Plot from 'react-plotly.js'
+import EditBubble from './EditBubble'
 
 export default function Bubble(props){
   let unpack = (rows, key) => {
@@ -11,10 +11,14 @@ export default function Bubble(props){
   const cityPop = unpack(props.data, 'pop')
   const cityLat = unpack(props.data, 'lat')
   const cityLon = unpack(props.data, 'lon')
-  const color = [,"rgb(255,65,54)","rgb(133,20,75)","rgb(255,133,27)","lightgrey"]
+  //const color = ["rgb(255,65,54)","rgb(133,20,75)","rgb(255,133,27)","lightgrey"]
   let citySize = []
   let hoverText = []
   const scale = 50000
+
+  const [title, setTitle] = useState('Map')
+  const [backgroundColor, setBackgroundColor] = useState('rgb(217, 217, 217)')
+  const [bubbleColor, setBubbleColor] = useState('light blue')
 
   for ( var i = 0 ; i < cityPop.length; i++) {
       var currentSize = cityPop[i] / scale;
@@ -36,11 +40,12 @@ export default function Bubble(props){
               color: 'black',
               width: 2
           },
+          color: bubbleColor,
       }
   }];
 
   var layout = {
-      title: '2014 US City Populations',
+      title: title,
       showlegend: false,
       geo: {
           scope: 'usa',
@@ -48,7 +53,7 @@ export default function Bubble(props){
               type: 'albers usa'
           },
           showland: true,
-          landcolor: 'rgb(217, 217, 217)',
+          landcolor: backgroundColor,
           subunitwidth: 1,
           countrywidth: 1,
           subunitcolor: 'rgb(255,255,255)',
@@ -58,8 +63,19 @@ export default function Bubble(props){
 
 
   return (
-    <div>
-      <Plot data={data} layout={layout} />
+    <div className="row">
+      <div className="col">
+        <Plot data={data} layout={layout} />
+      </div>
+      <div className="col">
+        <EditBubble
+          title={title}
+          setTitle={setTitle}
+          backgroundColor={backgroundColor}
+          setBackgroundColor={setBackgroundColor}
+          bubbleColor={bubbleColor}
+          setBubbleColor={setBubbleColor} />
+      </div>
     </div>
   )
 }
