@@ -8,6 +8,7 @@ import Bar from './components/Bar'
 import Pie from './components/Pie'
 import Upload from './components/Upload'
 import ChooseData from './components/ChooseData'
+import Bubble from './components/Bubble'
 
 export default function App(){
   const [data, setData] = useState([])
@@ -22,6 +23,7 @@ export default function App(){
           <Route path='/upload-line' element={<Upload link='/choose-data-line' setData={setData} />} />
           <Route path='/upload-bar' element={<Upload link='/choose-data-bar' setData={setData} />} />
           <Route path='/upload-pie' element={<Upload link='/choose-data-pie' setData={setData} />} />
+          <Route path='/upload-map-bubbles' element={<Upload link='/make-map-bubbles' setData={setData} />} />
 
           <Route path='/choose-data-scatter' element={<ChooseData link='/make-scatter' data={data} setData={setData} />} />
           <Route path='/choose-data-line' element={<ChooseData link='/make-line' data={data} setData={setData} />} />
@@ -32,6 +34,8 @@ export default function App(){
           <Route path='/make-line' element={<Line data={data} />} />
           <Route path='/make-bar' element={<Bar data={data} />} />
           <Route path='/make-pie' element={<Pie data={data} />} />
+
+          <Route path='/make-map-bubbles' element={<Bubble data={data} />} />
         </Routes>
       </Router>
     </div>
